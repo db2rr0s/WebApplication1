@@ -1,0 +1,26 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+}
+
+.td-actions {
+    padding: 0px;
+    width: 200px;
+    text-align: center;
+}
+
+.validationErrors {
+	padding: 10px;
+	font-weight: bold;
+}

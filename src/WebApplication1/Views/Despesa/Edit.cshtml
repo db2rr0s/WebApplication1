@@ -1,0 +1,15 @@
+﻿<h2>Alterar Despesa</h2>
+<div class="row">
+    <div class="col-md-5">
+        <form name="formEdit" novalidate ng-submit="edit()">
+            @{ await Html.RenderPartialAsync("_EditPartial"); }           
+            <a href="#/Despesas" class="btn btn-default">
+                <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span> Cancelar
+            </a>
+            <button type="submit" ng-disabled="formEdit.$invalid" class="btn btn-primary">
+                <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Salvar
+            </button>
+        </form>
+
+    </div>
+</div>

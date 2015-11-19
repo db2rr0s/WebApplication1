@@ -1,0 +1,91 @@
+﻿<h2>Relatório de Receitas/Despesas</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <form ng-submit="search()">
+                <div class="form-group">
+                    <label for="nome" class="col-md-1 control-label">Filtros</label>
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="filter.StartDate" ui-mask="99/99/9999" model-view-value="true">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="filter.EndDate" ui-mask="99/99/9999" model-view-value="true">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="filter.ApplyGroup"> Agrupar por Categoria
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Gerar
+                        </button>
+                    </div>
+                    <div class="col-md-1">                            
+                        <button type="button" ng-disabled="!items.length" class="btn btn-default" ng-click="export()">
+                            <span class="glyphicon glyphicon-export" aria-hidden="true"></span> Exportar
+                        </button>
+                    </div>
+                </div>                  
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row" ng-hide="filter.ApplyGroup">
+    <div class="col-lg-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                    <th>Categoria</th>
+                    <th>Data</th>
+                    <th>Observação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{ item.Tipo }}</td>
+                    <td>{{ item.Valor| currency }}</td>
+                    <td>{{ item.Categoria }}</td>
+                    <td>{{ item.Data| date }}</td>
+                    <td>{{ item.Observacao }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row" ng-hide="!filter.ApplyGroup">
+    <div class="col-lg-12">
+        <div ng-repeat="item in items2">
+            <h3>{{ item.Categoria }}</h3>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                        <th>Categoria</th>
+                        <th>Data</th>
+                        <th>Observação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="subitem in item.SubItens">
+                        <td>{{ subitem.Tipo }}</td>
+                        <td>{{ subitem.Valor| currency }}</td>
+                        <td>{{ subitem.Categoria }}</td>
+                        <td>{{ subitem.Data| date }}</td>
+                        <td>{{ subitem.Observacao }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>        
+    </div>
+</div>

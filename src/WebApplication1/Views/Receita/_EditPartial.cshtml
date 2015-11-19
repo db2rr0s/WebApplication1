@@ -1,0 +1,42 @@
+﻿<div class="bg-danger validationErrors" ng-show="validationErrors">
+    <ul>
+        <li ng-repeat="error in validationErrors track by $index">{{error}}</li>
+    </ul>
+</div>
+<div class="form-group">
+    <label for="valor">Valor</label>
+    <input name="valor"
+           type="text"
+           class="form-control"
+           ng-model="receita.Valor"
+           ng-required="true"
+           currencyformatter>
+</div>
+<div class="form-group">
+    <label for="categoria">Categoria</label>
+    <input name="categoria"
+           type="text"
+           class="form-control"
+           placeholder="Categoria"
+           ng-model="receita.Categoria"
+           ng-required="true">
+</div>
+<div class="form-group">
+    <label for="data">Data</label>
+    <input name="data"
+           type="text"
+           class="form-control"
+           ng-model="receita.Data"
+           ng-required="true"
+           ui-mask="99/99/9999"
+           model-view-value="true">
+</div>
+<div class="form-group">
+    <label for="observacao">Observação</label>
+    <input name="observacao"
+           type="text"
+           class="form-control"
+           placeholder="Observação"
+           ng-model="receita.Observacao"
+           ng-required="true">
+</div>

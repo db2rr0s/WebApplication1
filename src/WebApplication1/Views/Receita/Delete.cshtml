@@ -1,0 +1,10 @@
+﻿<h2>Excluir Receita</h2>
+<div class="alert alert-warning">
+    Confirma a exclusão da receita &quot;{{ receita.Id }} - {{ receita.Observacao }}&quot;?
+</div>
+<a href="#/Receitas" class="btn btn-default">
+    <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span> Cancelar
+</a>
+<button class="btn btn-danger" ng-click="delete()">
+    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Deletar
+</button>

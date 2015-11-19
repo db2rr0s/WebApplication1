@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net45": {
+      "wrappedProject": "../../Business/Business.csproj",
+      "bin": {
+        "assembly": "../../Business/obj/{configuration}/Business.dll",
+        "pdb": "../../Business/obj/{configuration}/Business.pdb"
+      },
+      "dependencies": {
+        "Entities": "1.0.0-*"
+      }
+    }
+  }
+}

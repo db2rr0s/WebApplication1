@@ -1,0 +1,10 @@
+﻿<h2>Excluir Despesa</h2>
+<div class="alert alert-warning">
+    Confirma a exclusão da despesa &quot;{{ despesa.Id }} - {{ despesa.Observacao }}&quot;?
+</div>
+<a href="#/Despesas" class="btn btn-default">
+    <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span> Cancelar
+</a>
+<button class="btn btn-danger" ng-click="delete()">
+    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Deletar
+</button>
