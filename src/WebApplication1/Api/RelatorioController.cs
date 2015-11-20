@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Business;
 using WebApplication1.Models;
+using System.Globalization;
 
 namespace WebApplication1.Api
 {
@@ -20,8 +21,21 @@ namespace WebApplication1.Api
             _despesaBus = despesaBus;
         }
         
-        public IEnumerable<RelatorioItemViewModel> Get([FromQuery(Name = "StartDate")] DateTime? startDate, [FromQuery(Name = "EndDate")] DateTime? endDate, [FromQuery(Name = "ApplyGroup")] bool? applyGroup)
+        public IEnumerable<RelatorioItemViewModel> Get([FromQuery(Name = "StartDate")] string startDateString, [FromQuery(Name = "EndDate")] string endDateString, [FromQuery(Name = "ApplyGroup")] bool? applyGroup)
         {
+            DateTime? startDate = null, endDate = null;
+
+            // Como o AspNet.Localization não está estável, optei por receber string e fazer a conversão na mão utilizando a cultura local
+            if(!string.IsNullOrEmpty(startDateString))
+            {
+                startDate = Convert.ToDateTime(startDateString, new CultureInfo("pt-BR"));
+            }
+
+            if(!string.IsNullOrEmpty(endDateString))
+            {
+                endDate = Convert.ToDateTime(endDateString, new CultureInfo("pt-BR"));
+            }
+
             var receitas = from r in _receitaBus.FindAll(r => (!startDate.HasValue || r.Data >= startDate.Value) && (!endDate.HasValue || r.Data <= endDate.Value))
                            select new RelatorioItemViewModel()
                            {

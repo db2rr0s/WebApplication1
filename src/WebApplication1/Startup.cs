@@ -1,51 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
-using Microsoft.Framework.DependencyInjection;
-using Repository;
-using Microsoft.Framework.Configuration;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
-using Microsoft.Framework.Runtime;
-using Business;
-using Entities;
+using Microsoft.Framework.DependencyInjection;
+using System.Globalization;
 
 namespace WebApplication1
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; set; }
-
-        public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
+        public Startup(IHostingEnvironment env)
         {
-            var builder = new ConfigurationBuilder(appEnv.ApplicationBasePath);
-            builder.AddJsonFile("config.json");
-            builder.AddEnvironmentVariables();
-
-            Configuration = builder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();                        
+            services.AddMvc().ConfigureMvc(options => { options.SerializerSettings.Culture = new CultureInfo("pt-BR"); });
 
-            services.AddInstance<IDbSettings>(new DbSettings() { ConnectionString = Configuration["Data:DefaultConnection:ConnectionString"] });
-            services.AddTransient<WebApplication1DbContext>();
+            services.AddInstance<Repository.IDbSettings>(new Repository.DbSettings() { ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bitbucket\\github\\WebApplication1\\artifacts\\bin\\WebApplication1\\Database\\Database1.mdf;Integrated Security=True;" });
+            services.AddTransient<Repository.WebApplication1DbContext>();
 
-            services.AddTransient<IRepository<Despesa>, DespesaRepository>();
-            services.AddTransient<IRepository<Receita>, ReceitaRepository>();
+            services.AddTransient<Business.IRepository<Entities.Despesa>, Repository.DespesaRepository>();
+            services.AddTransient<Business.IRepository<Entities.Receita>, Repository.ReceitaRepository>();
 
-            services.AddTransient<IDespesaBusiness, DespesaBusiness>();
-            services.AddTransient<IReceitaBusiness, ReceitaBusiness>();            
+            services.AddTransient<Business.IDespesaBusiness, Business.DespesaBusiness>();
+            services.AddTransient<Business.IReceitaBusiness, Business.ReceitaBusiness>();            
         }
 
         public void Configure(IApplicationBuilder app)
-        {            
-            app.UseMvc(routes => {
-                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-            });
-        }
-    }
+        { 
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");                
+            });            
+        }        
+    }    
 }
