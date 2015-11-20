@@ -6,6 +6,7 @@ using Microsoft.AspNet.Mvc;
 using Entities;
 using WebApplication1.Models;
 using Business;
+using System.Globalization;
 
 namespace WebApplication1.Api
 {
@@ -20,8 +21,21 @@ namespace WebApplication1.Api
         }
 
         [HttpGet]
-        public IEnumerable<Receita> Get([FromQuery(Name = "StartDate")] DateTime? startDate, [FromQuery(Name = "EndDate")] DateTime? endDate, [FromQuery(Name = "Category")] string category)
+        public IEnumerable<Receita> Get([FromQuery(Name = "StartDate")] string startDateString, [FromQuery(Name = "EndDate")] string endDateString, [FromQuery(Name = "Category")] string category)
         {
+            DateTime? startDate = null, endDate = null;
+
+            // Como o AspNet.Localization não está estável, optei por receber string e fazer a conversão na mão utilizando a cultura local
+            if (!string.IsNullOrEmpty(startDateString))
+            {
+                startDate = Convert.ToDateTime(startDateString, new CultureInfo("pt-BR"));
+            }
+
+            if (!string.IsNullOrEmpty(endDateString))
+            {
+                endDate = Convert.ToDateTime(endDateString, new CultureInfo("pt-BR"));
+            }
+
             return _business.FindAll(r => (!startDate.HasValue || r.Data >= startDate.Value) && (!endDate.HasValue || r.Data <= endDate.Value) && (string.IsNullOrEmpty(category) || r.Categoria == category));
         }
 

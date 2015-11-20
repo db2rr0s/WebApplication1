@@ -78,6 +78,11 @@ namespace WebApplication1.Api
                     currentItem.SubItens.Add(item);
                 }
 
+                if(currentItem != null)
+                {
+                    list.Add(currentItem);
+                }
+
                 return list;
             }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Controllers
 {
+    // Poderia ser html estático
     public class DespesaController : Controller
     {
         public IActionResult Index()

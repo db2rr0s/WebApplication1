@@ -6,6 +6,7 @@ using Microsoft.AspNet.Mvc;
 
 namespace WebApplication1.Controllers
 {
+    // Poderia ser html estático
     public class HomeController : Controller
     {
         public IActionResult Index()

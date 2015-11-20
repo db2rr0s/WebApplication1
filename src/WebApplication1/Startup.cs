@@ -1,28 +1,40 @@
-﻿using Microsoft.AspNet.Builder;
+﻿using Business;
+using Entities;
+using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
+using Microsoft.Framework.Runtime;
+using Repository;
 using System.Globalization;
 
 namespace WebApplication1
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public IConfiguration Configuration { get; set; }
+
+        public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
         {
+            var builder = new ConfigurationBuilder(appEnv.ApplicationBasePath);
+            builder.AddJsonFile("config.json");
+            builder.AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().ConfigureMvc(options => { options.SerializerSettings.Culture = new CultureInfo("pt-BR"); });
 
-            services.AddInstance<Repository.IDbSettings>(new Repository.DbSettings() { ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bitbucket\\github\\WebApplication1\\artifacts\\bin\\WebApplication1\\Database\\Database1.mdf;Integrated Security=True;" });
+            services.AddInstance<IDbSettings>(new DbSettings() { ConnectionString = Configuration["Data:DefaultConnection:ConnectionString"] });
             services.AddTransient<Repository.WebApplication1DbContext>();
 
-            services.AddTransient<Business.IRepository<Entities.Despesa>, Repository.DespesaRepository>();
-            services.AddTransient<Business.IRepository<Entities.Receita>, Repository.ReceitaRepository>();
+            services.AddTransient<IRepository<Despesa>, DespesaRepository>();
+            services.AddTransient<IRepository<Receita>, ReceitaRepository>();
 
-            services.AddTransient<Business.IDespesaBusiness, Business.DespesaBusiness>();
-            services.AddTransient<Business.IReceitaBusiness, Business.ReceitaBusiness>();            
+            services.AddTransient<IDespesaBusiness, DespesaBusiness>();
+            services.AddTransient<IReceitaBusiness, ReceitaBusiness>();            
         }
 
         public void Configure(IApplicationBuilder app)
