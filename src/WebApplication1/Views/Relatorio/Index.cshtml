@@ -53,6 +53,13 @@
                     <td>{{ item.Data| date }}</td>
                     <td>{{ item.Observacao }}</td>
                 </tr>
+                <tr ng-hide="!items.length">
+                    <td></td>
+                    <td>{{ totalItems(items)| currency }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -78,6 +85,13 @@
                         <td>{{ subitem.Categoria }}</td>
                         <td>{{ subitem.Data| date }}</td>
                         <td>{{ subitem.Observacao }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>{{ totalItems(item.SubItens)| currency}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>

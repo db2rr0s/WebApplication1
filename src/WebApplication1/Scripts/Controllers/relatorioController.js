@@ -22,5 +22,11 @@
                 $scope.items = Relatorio.query($scope.filter);
             }
         };
+
+        $scope.totalItems = function (items) {
+            return items.reduce(function (a, b) {
+                return a + b.Valor;
+            }, 0);
+        };
     }
 })();
