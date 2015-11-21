@@ -22,8 +22,5 @@
                 $scope.items = Relatorio.query($scope.filter);
             }
         };
-
-        $scope.export = function () {            
-        };
     }
 })();
