@@ -21,6 +21,9 @@ namespace WebApplication1
             builder.AddEnvironmentVariables();
 
             Configuration = builder.Build();
+
+            var dataDirectory = System.IO.Path.GetFullPath(appEnv.ApplicationBasePath + "\\..\\..\\artifacts\\bin\\WebApplication1\\Database");
+            System.AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectory);
         }
 
         public void ConfigureServices(IServiceCollection services)

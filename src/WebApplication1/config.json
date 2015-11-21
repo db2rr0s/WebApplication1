@@ -1,7 +1,7 @@
 ﻿{
 	"Data": {
 		"DefaultConnection": {
-			"ConnectionString": "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bitbucket\\github\\WebApplication1\\artifacts\\bin\\WebApplication1\\Database\\Database1.mdf;Integrated Security=True;"
+			"ConnectionString": "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;"
 		}
 	}
 }
