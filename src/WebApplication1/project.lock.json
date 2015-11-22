@@ -3,6 +3,7 @@
   "version": -9996,
   "targets": {
     "DNX,Version=v4.5.1": {
+      "Entities/1.0.0": {},
       "Microsoft.AspNet.Authentication/1.0.0-beta5": {
         "dependencies": {
           "Microsoft.AspNet.DataProtection": "1.0.0-beta5",
@@ -584,26 +585,6 @@
           "Microsoft.AspNet.Loader.IIS": "1.0.0-beta5"
         }
       },
-      "Microsoft.AspNet.Server.WebListener/1.0.0-beta5": {
-        "dependencies": {
-          "Microsoft.AspNet.Http.Features": "1.0.0-beta5",
-          "Microsoft.AspNet.Hosting.Server.Abstractions": "1.0.0-beta5",
-          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta5",
-          "Microsoft.Net.Http.Server": "1.0.0-beta5"
-        },
-        "frameworkAssemblies": [
-          "mscorlib",
-          "System",
-          "System.Core",
-          "Microsoft.CSharp"
-        ],
-        "compile": {
-          "lib/dnx451/Microsoft.AspNet.Server.WebListener.dll": {}
-        },
-        "runtime": {
-          "lib/dnx451/Microsoft.AspNet.Server.WebListener.dll": {}
-        }
-      },
       "Microsoft.AspNet.WebUtilities/1.0.0-beta5": {
         "dependencies": {
           "Microsoft.Framework.WebEncoders.Core": "1.0.0-beta5"
@@ -981,38 +962,6 @@
           "lib/dnx451/Microsoft.Net.Http.Headers.dll": {}
         }
       },
-      "Microsoft.Net.Http.Server/1.0.0-beta5": {
-        "dependencies": {
-          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta5",
-          "Microsoft.Net.WebSockets": "1.0.0-beta5"
-        },
-        "frameworkAssemblies": [
-          "mscorlib",
-          "System",
-          "System.Core",
-          "Microsoft.CSharp"
-        ],
-        "compile": {
-          "lib/dnx451/Microsoft.Net.Http.Server.dll": {}
-        },
-        "runtime": {
-          "lib/dnx451/Microsoft.Net.Http.Server.dll": {}
-        }
-      },
-      "Microsoft.Net.WebSockets/1.0.0-beta5": {
-        "frameworkAssemblies": [
-          "mscorlib",
-          "System",
-          "System.Core",
-          "Microsoft.CSharp"
-        ],
-        "compile": {
-          "lib/net45/Microsoft.Net.WebSockets.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Net.WebSockets.dll": {}
-        }
-      },
       "Newtonsoft.Json/6.0.6": {
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -1043,6 +992,30 @@
     }
   },
   "libraries": {
+    "Entities/1.0.0": {
+      "serviceable": true,
+      "sha512": "kr0/UQeUogN2t0rxhHJuwt1wb6VwXwUylNgfh/5f3Ig7mczvtMvAEKx1/MQCNW5USlnKM3//PcXJWHk1NvnLZA==",
+      "files": [
+        "Entities.1.0.0.nupkg",
+        "Entities.1.0.0.nupkg.sha512",
+        "Entities.nuspec",
+        "tools/net45/EntityFramework.dll",
+        "tools/net45/EntityFramework.SqlServer.dll",
+        "tools/net45/EntityFramework.SqlServer.xml",
+        "tools/net45/EntityFramework.xml",
+        "tools/net45/Microsoft.AspNet.Identity.Core.dll",
+        "tools/net45/Microsoft.AspNet.Identity.Core.xml",
+        "tools/net45/Microsoft.AspNet.Identity.EntityFramework.dll",
+        "tools/net45/Microsoft.AspNet.Identity.EntityFramework.xml",
+        "tools/net45/Project158.Entities.1.0.0.0.Debug.AnyCPU.nupkg",
+        "tools/net45/Project158.Entities.dll",
+        "tools/net45/Project158.Entities.dll.config",
+        "tools/net45/Project158.Entities.pdb",
+        "tools/net45/Project158.Entities.XML",
+        "tools/net45/Project158.Resources.dll",
+        "tools/net45/Project158.Resources.pdb"
+      ]
+    },
     "Microsoft.AspNet.Authentication/1.0.0-beta5": {
       "serviceable": true,
       "sha512": "0aGfwSmbVHhNIQSp6dXqz6sLYD07U9Dgnw8rm/wnQDkLFfJ9iPQKBBTk/Oh/6wGwaSg9Ko7mzXTwILE42HZdZA==",
@@ -1467,19 +1440,6 @@
         "Microsoft.AspNet.Server.IIS.nuspec"
       ]
     },
-    "Microsoft.AspNet.Server.WebListener/1.0.0-beta5": {
-      "serviceable": true,
-      "sha512": "5wJEiGFsjV1FudzrVQfJ/Pmbk7KS6718Iy9u0572MAg6JdCMpodzEvquCw9udXN2vzVy61SMps4KZfurBfAqFQ==",
-      "files": [
-        "Microsoft.AspNet.Server.WebListener.1.0.0-beta5.nupkg",
-        "Microsoft.AspNet.Server.WebListener.1.0.0-beta5.nupkg.sha512",
-        "Microsoft.AspNet.Server.WebListener.nuspec",
-        "lib/dnx451/Microsoft.AspNet.Server.WebListener.dll",
-        "lib/dnx451/Microsoft.AspNet.Server.WebListener.xml",
-        "lib/dnxcore50/Microsoft.AspNet.Server.WebListener.dll",
-        "lib/dnxcore50/Microsoft.AspNet.Server.WebListener.xml"
-      ]
-    },
     "Microsoft.AspNet.WebUtilities/1.0.0-beta5": {
       "serviceable": true,
       "sha512": "Ieb9JeaI57V2HRWyFsQE+Ioo7jRE7gp8QgmHAgCuc58RfUUvKf3BdmjMMqw+0DfOQMf4VL9xWpj0yQ/bMA1VDA==",
@@ -1828,34 +1788,6 @@
         "lib/net45/Microsoft.Net.Http.Headers.xml"
       ]
     },
-    "Microsoft.Net.Http.Server/1.0.0-beta5": {
-      "serviceable": true,
-      "sha512": "U7qFSAMeZRIs9tR//2rnXdHnb9OI/+v1WxU1Ql/HSMQ2o/+6DV3YMOxmoe4yDi9PwFav6CiclCD9Odp99s3oMQ==",
-      "files": [
-        "Microsoft.Net.Http.Server.1.0.0-beta5.nupkg",
-        "Microsoft.Net.Http.Server.1.0.0-beta5.nupkg.sha512",
-        "Microsoft.Net.Http.Server.nuspec",
-        "lib/dnx451/Microsoft.Net.Http.Server.dll",
-        "lib/dnx451/Microsoft.Net.Http.Server.xml",
-        "lib/dnxcore50/Microsoft.Net.Http.Server.dll",
-        "lib/dnxcore50/Microsoft.Net.Http.Server.xml",
-        "lib/net45/Microsoft.Net.Http.Server.dll",
-        "lib/net45/Microsoft.Net.Http.Server.xml"
-      ]
-    },
-    "Microsoft.Net.WebSockets/1.0.0-beta5": {
-      "serviceable": true,
-      "sha512": "q2w6//6WLVteA99pdYZZuSdALASwIjKjH8mOIJEpqSt2lStDi3O+ppiEqLfrlr0Am2ACYFar8Sz5J87PM53Q9A==",
-      "files": [
-        "Microsoft.Net.WebSockets.1.0.0-beta5.nupkg",
-        "Microsoft.Net.WebSockets.1.0.0-beta5.nupkg.sha512",
-        "Microsoft.Net.WebSockets.nuspec",
-        "lib/dnxcore50/Microsoft.Net.WebSockets.dll",
-        "lib/dnxcore50/Microsoft.Net.WebSockets.xml",
-        "lib/net45/Microsoft.Net.WebSockets.dll",
-        "lib/net45/Microsoft.Net.WebSockets.xml"
-      ]
-    },
     "Newtonsoft.Json/6.0.6": {
       "sha512": "w26uZNyCG5VeoKiEOJ4+9/o8koSofLKwHl7WLreIcp0U6r57L7WiRXmjp8MTKFw6dYNZ9AE0lw69WYbIhUsU9Q==",
       "files": [
@@ -1907,7 +1839,6 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.AspNet.Server.IIS >= 1.0.0-beta5",
-      "Microsoft.AspNet.Server.WebListener >= 1.0.0-beta5",
       "Microsoft.AspNet.Mvc >= 6.0.0-beta5",
       "Microsoft.Framework.Configuration.Json >= 1.0.0-beta5"
     ],
