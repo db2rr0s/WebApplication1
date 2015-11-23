@@ -19,4 +19,5 @@
     <strong>OBSERVAÇÕES</strong><br />    
     1 - Ao carregar a solution no Visual Studio 2015, é necessário aguardar um tempo para que o NPM e o Bower instale as dependências. O progresso pode ser visto no Output. Se as dependências não forem instaladas correntamente, a aplicação não vai funcionar porque os arquivos são colocados na pasta root via tarefa Gulp.<br />
     2 - Se quando a solution for carregada, o nó "References" do projeto WepApplication1 não estiver com o subnó DNX, é necessário clicar com o direito nesse projeto e dá um unload-reload. Não sei a causa disso, mas eu sempre faço esse procedimento e funciona :D Eu sempre espero a instalação das dependências para poder executar esse passo.<br />
+    3 - Houve casos em que a dependência do EntityFramework não foi instalada e dá erro no build. Solução: Abrir o "Manage Nuget Packages" e dá um "Restore".<br>
 </p>
